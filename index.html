@@ -157,6 +157,7 @@
                         if (i > nCol) aBoard[nRow][i] = aBoard[nRow][i - 1];
                     }
                     aBoard[nRow][nCol] = 16;
+                    setTimeout(checkIfWon, 150);
                 }
                 else {
                     $(".parts:nth-of-type(" + aBoard[nRow][nCol0] + ")").css({ left: $(".parts:nth-of-type(" + aBoard[nRow][nCol] + ")").position().left });
@@ -165,6 +166,7 @@
                         if (i < nCol) aBoard[nRow][i] = aBoard[nRow][i + 1];
                     }
                     aBoard[nRow][nCol] = 16;
+                    setTimeout(checkIfWon, 150);
                 }
             }
             else if (nCol === nCol0) {
@@ -175,6 +177,7 @@
                         if (i > nRow) aBoard[i][nCol] = aBoard[i - 1][nCol];
                     }
                     aBoard[nRow][nCol] = 16;
+                    setTimeout(checkIfWon, 150);
                 }
                 else {
                     $(".parts:nth-of-type(" + aBoard[nRow0][nCol] + ")").css({ top: $(".parts:nth-of-type(" + aBoard[nRow][nCol] + ")").position().top });
@@ -183,9 +186,9 @@
                         if (i < nRow) aBoard[i][nCol] = aBoard[i + 1][nCol];
                     }
                     aBoard[nRow][nCol] = 16;
+                    setTimeout(checkIfWon, 150);
                 }
             }
-            setTimeout(checkIfWon, 150);
         }
 
         function findPartIndex(num, dir) {
