@@ -72,6 +72,14 @@
             align-items: center;
         }
 
+        #moves {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 0.5rem 0;
+            width: 20.5rem;
+            text-align: start;
+        }
+
         #board {
             position: relative;
             display: inline-block;
@@ -121,12 +129,14 @@
 <body>
     <h1>The 15 Puzzle</h1>
     <div id="container">
+        <div id="moves"> Moves: 0</div>
         <div id="board"></div>
         <button id="shuffle" onclick="shuffle()">Shuffle</button>
     </div>
     <script>
         let aDistance = [0.5, 5.5, 10.5, 15.5];
         let aBoard = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]];
+        let moves = 0
         $(function () {
             $("#container").css({ height: window.innerHeight - $("h1").outerHeight(true) });
             for (let i = 1; i <= 15; i++) {
@@ -168,6 +178,8 @@
                     aBoard[nRow][nCol] = 16;
                     setTimeout(checkIfWon, 150);
                 }
+                moves++;
+                $("#moves").text("Moves: " + moves)
             }
             else if (nCol === nCol0) {
                 if (nRow < nRow0) {
@@ -188,6 +200,8 @@
                     aBoard[nRow][nCol] = 16;
                     setTimeout(checkIfWon, 150);
                 }
+                moves++;
+                $("#moves").text("Moves: " + moves)
             }
         }
 
@@ -215,6 +229,8 @@
 
         let aShuffle, nRand, sArray;
         function shuffle() {
+            moves = 0
+            $("#moves").text("Moves: 0")
             for (let i = 0; i < 150; i++) {
                 nRow0 = findPartIndex(16, 1);
                 nCol0 = findPartIndex(16, 2);
